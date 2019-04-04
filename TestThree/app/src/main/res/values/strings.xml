@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">TestThree</string>
+    <string name="TestView">点击了采用绑定的监听器</string>
+    <string name="TestActivityListener">Activity作为监听器</string>
+    <string name="TestAnonymousListener">匿名内部类</string>
+    <string name="TestBindingTagListener">绑定到标签</string>
+    <string name="TestListener">内部类</string>
+    <string name="TestSendSmsListener">外部类</string>
+    <string name="TestButterKnifeListener">ButterKnife绑定</string>
+    <string name="SystemInformation">系统信息</string>
+    <string name="TestProgressBar">模拟进度条</string>
+    <string name="ProgressBarHorizontal">水平进度条</string>
+</resources>

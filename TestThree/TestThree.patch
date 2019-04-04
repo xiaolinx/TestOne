@@ -1,0 +1,181 @@
+Index: TestThree/app/src/main/java/com/example/testthree/ConfigurationTest.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- TestThree/app/src/main/java/com/example/testthree/ConfigurationTest.java	(date 1554293184285)
++++ TestThree/app/src/main/java/com/example/testthree/ConfigurationTest.java	(date 1554293184285)
+@@ -0,0 +1,40 @@
++package com.example.testthree;
++
++import android.app.Activity;
++import android.content.res.Configuration;
++import android.os.Bundle;
++import android.view.View;
++import android.widget.Button;
++import android.widget.EditText;
++
++public class ConfigurationTest extends Activity {
++    EditText ori;
++    EditText navigation;
++    EditText touch;
++    EditText mnc;
++    @Override
++    public void onCreate(Bundle savedInstanceState) {
++        super.onCreate(savedInstanceState);
++        setContentView(R.layout.test_configuration);
++        // 获取应用界面中的界面组件
++        ori = (EditText) findViewById(R.id.ori);
++        navigation = (EditText) findViewById(R.id.navigation);
++        touch = (EditText) findViewById(R.id.touch);
++        mnc = (EditText) findViewById(R.id.mnc);
++        Button bn = (Button) findViewById(R.id.bn9);
++        bn.setOnClickListener(new View.OnClickListener() {
++            @Override
++            public void onClick(View view) {
++                Configuration cfg = getResources().getConfiguration();
++                String screen = cfg.orientation == Configuration.ORIENTATION_LANDSCAPE ?
++                        "横向屏幕": "竖向屏幕";
++                String mncCode = cfg.mnc + "";
++                String naviName = cfg.orientation == Configuration.NAVIGATION_NONAV ? "没有方向控制": cfg.orientation == Configuration.NAVIGATION_WHEEL ? "滚轮控制方向": cfg.orientation == Configuration.NAVIGATION_DPAD ? "方向键控制方向": "轨迹球控制方向";
++                navigation.setText(naviName);
++                String touchName = cfg.touchscreen == Configuration.TOUCHSCREEN_NOTOUCH ? "无触摸屏": cfg.touchscreen == Configuration.TOUCHSCREEN_STYLUS ? "触摸笔式触摸屏": "接受手指的触摸屏";
++                ori.setText(screen);
++                mnc.setText(mncCode);
++                touch.setText(touchName);
++            }
++        });
++    }}
+Index: TestThree/app/src/main/res/layout/test_progressdialog.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- TestThree/app/src/main/res/layout/test_progressdialog.xml	(date 1554341688185)
++++ TestThree/app/src/main/res/layout/test_progressdialog.xml	(date 1554341688185)
+@@ -0,0 +1,19 @@
++<?xml version="1.0" encoding="utf-8"?>
++<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
++    xmlns:tools="http://schemas.android.com/tools"
++    android:layout_width="match_parent"
++    android:layout_height="match_parent"
++    android:orientation="vertical" >
++    <Button
++        android:id="@+id/btn9"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:layout_gravity="center_horizontal"
++        android:text="@string/ProgressBarHorizontal" />
++    <ProgressBar
++        android:id="@+id/progressBar"
++        style="@android:style/Widget.ProgressBar.Horizontal"
++        android:layout_width="match_parent"
++        android:layout_height="wrap_content"
++        android:max="100" />
++</LinearLayout>
+\ No newline at end of file
+Index: TestThree/app/src/main/res/layout/test_configuration.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- TestThree/app/src/main/res/layout/test_configuration.xml	(date 1554293184327)
++++ TestThree/app/src/main/res/layout/test_configuration.xml	(date 1554293184327)
+@@ -0,0 +1,38 @@
++<?xml version="1.0" encoding="utf-8"?>
++
++<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
++    android:orientation="vertical"
++    android:layout_width="fill_parent"
++    android:layout_height="fill_parent"
++    android:gravity="center_horizontal">
++    <EditText
++        android:id="@+id/ori"
++        android:layout_width="fill_parent"
++        android:layout_height="wrap_content"
++        android:cursorVisible="false"
++        android:hint="显示屏幕方向"/>
++    <EditText
++        android:id="@+id/navigation"
++        android:layout_width="fill_parent"
++        android:layout_height="wrap_content"
++        android:cursorVisible="false"
++        android:hint="显示手机方向控制设备"/>
++    <EditText
++        android:id="@+id/touch"
++        android:layout_width="fill_parent"
++        android:layout_height="wrap_content"
++        android:cursorVisible="false"
++        android:hint="显示触摸屏状态"/>
++    <EditText
++        android:id="@+id/mnc"
++        android:layout_width="fill_parent"
++        android:layout_height="wrap_content"
++        android:cursorVisible="false"
++        android:hint="显示移动网络代号"/>
++
++    <Button
++        android:id="@+id/bn9"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:text="获取手机信息" />
++</LinearLayout>
+Index: TestThree/app/src/main/java/com/example/testthree/ProgressDialogTest.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- TestThree/app/src/main/java/com/example/testthree/ProgressDialogTest.java	(date 1554341791468)
++++ TestThree/app/src/main/java/com/example/testthree/ProgressDialogTest.java	(date 1554341791468)
+@@ -0,0 +1,51 @@
++package com.example.testthree;
++
++import java.util.Timer;
++import java.util.TimerTask;
++import android.app.Activity;
++import android.os.Bundle;
++import android.os.Handler;
++import android.os.Message;
++import android.view.View;
++import android.view.View.OnClickListener;
++import android.widget.Button;
++import android.widget.ProgressBar;
++
++public class ProgressDialogTest extends Activity {
++    private ProgressBar progressBar;
++    private Button btn9;
++    private Handler handler;
++    private int i = 0;
++
++    @Override
++    protected void onCreate(Bundle savedInstanceState) {
++        super.onCreate(savedInstanceState);
++        setContentView(R.layout.test_progressdialog);
++        progressBar = (ProgressBar) findViewById(R.id.progressBar);
++        btn9 = (Button) findViewById(R.id.btn9);
++        btn9.setOnClickListener(new OnClickListener() {
++            @Override
++            public void onClick(View v) {
++                handler = new Handler() {
++                    @Override
++                    public void handleMessage(Message msg) {
++                        super.handleMessage(msg);
++                        if (msg.what == 0x123) {
++                            if (i <= 100) {
++                                progressBar.setProgress(i);
++                                i++;
++                            }
++                        }
++                    }
++                };
++                new Timer().schedule(new TimerTask() {
++                    @Override
++                    public void run() {
++                        handler.sendEmptyMessage(0x123);
++                    }
++                }, 0, 1000);
++            }
++        });
++    }
++}
++
