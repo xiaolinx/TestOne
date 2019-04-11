@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">TestFour</string>
+    <string name="bind_name">绑定Service</string>
+    <string name="unbind_name">解除绑定</string>
+    <string name="get_service_status">获取service状态</string>
+    <string name="service_count">Service的count值动态值</string>
+    <string name="count">Service的count值</string>
+</resources>
