@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/TestLinearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="145dp"
+        android:layout_marginTop="70dp"
+        android:text="@string/linear_layout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/TestRelativeLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/relative_layout"
+        app:layout_constraintStart_toStartOf="@+id/TestLinearLayout"
+        app:layout_constraintTop_toBottomOf="@+id/TestLinearLayout" />
+
+    <Button
+        android:id="@+id/TestFrameLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/frame_layout"
+        app:layout_constraintStart_toStartOf="@+id/TestRelativeLayout"
+        app:layout_constraintTop_toBottomOf="@+id/TestRelativeLayout" />
+
+    <Button
+        android:id="@+id/TestTableLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/table_layout"
+        app:layout_constraintStart_toStartOf="@+id/TestFrameLayout"
+        app:layout_constraintTop_toBottomOf="@+id/TestFrameLayout" />
+
+    <Button
+        android:id="@+id/TestGridLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/grid_layout"
+        app:layout_constraintStart_toStartOf="@+id/TestTableLayout"
+        app:layout_constraintTop_toBottomOf="@+id/TestTableLayout" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="60dp"
+        android:text="@string/name"
+        app:layout_constraintStart_toStartOf="@+id/TestGridLayout"
+        app:layout_constraintTop_toBottomOf="@+id/TestGridLayout" />
+
+</android.support.constraint.ConstraintLayout>
